@@ -1,3 +1,4 @@
+// src\lib\analyzer\parseSitemap.ts
 import { XMLParser } from "fast-xml-parser";
 
 export interface SitemapResult {
@@ -9,7 +10,7 @@ export async function parseSitemap(sitemapUrl: string): Promise<SitemapResult> {
   try {
     const res = await fetch(sitemapUrl, {
       headers: {
-        "User-Agent": "SEOAnalyzerBot/1.0 (+https://example.com)",
+        "User-Agent": "SEOAnalyzerBot/1.0 (+https://seo.gabrielnathanael.site)",
         Accept: "application/xml,text/xml",
       },
     });

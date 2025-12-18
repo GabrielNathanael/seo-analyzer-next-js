@@ -1,3 +1,4 @@
+// src\lib\analyzer\parseRobots.ts
 export interface RobotsResult {
   reachable: boolean;
   sitemapUrls: string[];
@@ -9,7 +10,7 @@ export async function parseRobots(origin: URL): Promise<RobotsResult> {
   try {
     const res = await fetch(robotsUrl.toString(), {
       headers: {
-        "User-Agent": "SEOAnalyzerBot/1.0 (+https://example.com)",
+        "User-Agent": "SEOAnalyzerBot/1.0 (+https://seo.gabrielnathanael.site)",
         Accept: "text/plain",
       },
     });

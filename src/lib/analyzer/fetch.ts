@@ -66,7 +66,8 @@ export async function fetchHtml(url: URL) {
       redirect: "follow",
       signal: controller.signal,
       headers: {
-        "User-Agent": "SEOAnalyzerBot/1.0 (+https://example.com/bot-info)",
+        "User-Agent":
+          "SEOAnalyzerBot/1.0 (+https://seo.gabrielnathanael.site/bot-info)",
         Accept: "text/html,application/xhtml+xml",
       },
     });
