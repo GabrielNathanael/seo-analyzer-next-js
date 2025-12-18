@@ -1,4 +1,4 @@
-// src\lib\analyzer\recommend.ts
+// src/lib/analyzer/recommend.ts
 import type { CheckResult } from "@/types/analyzer";
 import type { Recommendation } from "@/types/recommendation";
 
@@ -147,6 +147,63 @@ const RULES: Record<string, Rule> = {
     howToFix: [
       "Ensure the sitemap URL returns a valid XML response.",
       "Fix server errors or incorrect paths.",
+    ],
+  },
+
+  // ---- Content Structure ----
+
+  "h1-exists": {
+    title: "Add an H1 heading to your page",
+    reason:
+      "The H1 heading is crucial for both users and search engines to understand the main topic of the page.",
+    howToFix: [
+      "Add an <h1> tag to your page content.",
+      "Make it descriptive and relevant to the page content.",
+      "Include your primary keyword if appropriate.",
+    ],
+  },
+
+  "h1-single": {
+    title: "Use only one H1 heading",
+    reason:
+      "Multiple H1 headings can confuse search engines about the main topic of your page.",
+    howToFix: [
+      "Keep only one <h1> tag per page.",
+      "Use H2-H6 for subheadings and sections.",
+      "Ensure the single H1 represents the main page topic.",
+    ],
+  },
+
+  "heading-hierarchy": {
+    title: "Fix heading hierarchy structure",
+    reason:
+      "A logical heading hierarchy improves content readability and helps search engines understand your content structure.",
+    howToFix: [
+      "Don't skip heading levels (e.g., H2 to H4 without H3).",
+      "Use headings in sequential order (H1 → H2 → H3).",
+      "Avoid empty headings without text content.",
+    ],
+  },
+
+  "images-alt": {
+    title: "Add alt text to all images",
+    reason:
+      "Alt text improves accessibility for screen readers and helps search engines understand image content.",
+    howToFix: [
+      "Add descriptive alt attributes to all <img> tags.",
+      "Describe what the image shows, not just 'image' or 'photo'.",
+      "Keep alt text concise but meaningful (under 125 characters).",
+    ],
+  },
+
+  "internal-links": {
+    title: "Add internal links to your content",
+    reason:
+      "Internal links help search engines discover other pages on your site and improve site navigation.",
+    howToFix: [
+      "Link to relevant pages within your website.",
+      "Use descriptive anchor text that indicates the linked content.",
+      "Ensure links are natural and add value to the user.",
     ],
   },
 };

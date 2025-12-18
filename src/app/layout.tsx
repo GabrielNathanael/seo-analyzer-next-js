@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import JsonLd from "@/components/seo/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,7 +27,6 @@ export const metadata: Metadata = {
     "SEO Analyzer",
     "Website Grader",
     "SEO Audit",
-    "Site Speed Test",
     "On-Page SEO",
     "Accessibility Check",
   ],
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description:
       "Analyze and improve your website's SEO performance with our free tool.",
     images: ["/seo.webp"],
-    creator: "@gabrielnathanael",
+    creator: "@gabrielnp",
   },
   robots: {
     index: true,
@@ -82,6 +82,7 @@ export default function RootLayout({
       >
         <JsonLd />
         {children}
+        <Analytics />
       </body>
     </html>
   );

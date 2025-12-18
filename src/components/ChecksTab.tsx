@@ -1,4 +1,3 @@
-// src\components\ChecksTab.tsx
 // src/components/ChecksTab.tsx
 "use client";
 
@@ -28,6 +27,10 @@ export function ChecksTab({ checks }: ChecksTabProps) {
     onpage: {
       label: "On-Page SEO",
       checks: checks.filter((c) => c.category === "onpage"),
+    },
+    content: {
+      label: "Content",
+      checks: checks.filter((c) => c.category === "content"),
     },
     social: {
       label: "Social Media",
@@ -143,6 +146,9 @@ export function ChecksTab({ checks }: ChecksTabProps) {
             <option value="onpage">
               On-Page SEO ({categories.onpage.checks.length})
             </option>
+            <option value="content">
+              Content ({categories.content.checks.length})
+            </option>
             <option value="social">
               Social Media ({categories.social.checks.length})
             </option>
@@ -163,11 +169,17 @@ export function ChecksTab({ checks }: ChecksTabProps) {
 
       {/* Desktop: Tabs */}
       <Tabs defaultValue="onpage" className="w-full hidden sm:block">
-        <TabsList className="grid w-full grid-cols-3 mb-6">
+        <TabsList className="grid w-full grid-cols-4 mb-6">
           <TabsTrigger value="onpage">
             {categories.onpage.label}
             <Badge variant="secondary" className="ml-2">
               {categories.onpage.checks.length}
+            </Badge>
+          </TabsTrigger>
+          <TabsTrigger value="content">
+            {categories.content.label}
+            <Badge variant="secondary" className="ml-2">
+              {categories.content.checks.length}
             </Badge>
           </TabsTrigger>
           <TabsTrigger value="social">

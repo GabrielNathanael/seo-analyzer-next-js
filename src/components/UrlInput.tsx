@@ -35,10 +35,10 @@ export function UrlInput({
       />
       <Button
         id="analyze-button"
-        onClick={onAnalyze}
+        onClick={() => onAnalyze()}
         disabled={loading}
         size="lg"
-        className="px-8 w-full sm:w-auto"
+        className="px-8 w-full sm:w-auto h-12"
       >
         {loading ? (
           <>

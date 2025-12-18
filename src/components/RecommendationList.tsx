@@ -1,4 +1,3 @@
-// src\components\RecommendationList.tsx
 // src/components/RecommendationList.tsx
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -97,6 +96,7 @@ function RecommendationCard({
   const getCategoryBadge = (category: string) => {
     const labels: Record<string, string> = {
       onpage: "On-Page",
+      content: "Content",
       social: "Social",
       discovery: "Discovery",
     };

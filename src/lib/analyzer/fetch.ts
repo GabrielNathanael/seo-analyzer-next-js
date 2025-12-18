@@ -56,7 +56,7 @@ export function assertSafeUrl(url: URL) {
 
 export async function fetchHtml(url: URL) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 9000); // 9s
+  const timeout = setTimeout(() => controller.abort(), 30000); // 30s
 
   const start = Date.now();
 

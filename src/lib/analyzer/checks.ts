@@ -1,14 +1,19 @@
-// src\lib\analyzer\checks.ts
 // src/lib/analyzer/checks.ts
-import type { CheckResult, SeoData, DiscoveryData } from "@/types/analyzer";
+import type {
+  CheckResult,
+  SeoData,
+  DiscoveryData,
+  ContentData,
+} from "@/types/analyzer";
 
 export function runChecks(input: {
   seo: SeoData;
   discovery: DiscoveryData;
+  content: ContentData;
 }): CheckResult[] {
   const checks: CheckResult[] = [];
 
-  const { seo, discovery } = input;
+  const { seo, discovery, content } = input;
 
   /* ======================
    * ON-PAGE SEO
@@ -222,6 +227,74 @@ export function runChecks(input: {
         : "Failed to fetch sitemap",
     });
   }
+
+  /* ======================
+   * CONTENT STRUCTURE
+   * ====================== */
+
+  // H1 exists and is unique
+  checks.push({
+    id: "h1-exists",
+    label: "H1 heading exists",
+    category: "content",
+    status: content.headings.hasH1 ? "pass" : "fail",
+    severity: "high",
+    evidence: content.headings.hasH1
+      ? `Found ${content.headings.h1Count} H1`
+      : "No H1 heading found",
+  });
+
+  // Single H1
+  if (content.headings.h1Count > 1) {
+    checks.push({
+      id: "h1-single",
+      label: "Only one H1 heading",
+      category: "content",
+      status: "warn",
+      severity: "medium",
+      evidence: `Found ${content.headings.h1Count} H1 headings - should only have one`,
+    });
+  }
+
+  // Heading hierarchy valid
+  checks.push({
+    id: "heading-hierarchy",
+    label: "Heading hierarchy is logical",
+    category: "content",
+    status: content.headings.issues.length === 0 ? "pass" : "warn",
+    severity: "medium",
+    evidence:
+      content.headings.issues.length === 0
+        ? `${content.headings.totalCount} headings with proper hierarchy`
+        : content.headings.issues.join("; "),
+  });
+
+  // Images have alt text
+  if (content.images.total > 0) {
+    const percentage = Math.round(
+      (content.images.withAlt / content.images.total) * 100
+    );
+    checks.push({
+      id: "images-alt",
+      label: "Images have alt text",
+      category: "content",
+      status: content.images.withoutAlt === 0 ? "pass" : "warn",
+      severity: "medium",
+      evidence: `${content.images.withAlt}/${content.images.total} images have alt text (${percentage}%)`,
+    });
+  }
+
+  // Internal links exist
+  checks.push({
+    id: "internal-links",
+    label: "Internal links present",
+    category: "content",
+    status: content.links.internal > 0 ? "pass" : "warn",
+    severity: "low",
+    evidence: `${content.links.internal} internal link${
+      content.links.internal !== 1 ? "s" : ""
+    } found`,
+  });
 
   return checks;
 }
