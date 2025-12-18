@@ -1,4 +1,3 @@
-// src\components\UrlInput.tsx
 // src/components/UrlInput.tsx
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -35,6 +34,7 @@ export function UrlInput({
         className="h-12 text-base flex-1"
       />
       <Button
+        id="analyze-button"
         onClick={onAnalyze}
         disabled={loading}
         size="lg"

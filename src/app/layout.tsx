@@ -1,7 +1,7 @@
 // src\app\layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import JsonLd from "@/components/JsonLd";
+import JsonLd from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const geistSans = Geist({
